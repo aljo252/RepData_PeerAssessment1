@@ -25,7 +25,7 @@ dailystep <- tapply(activity$steps, activity$date, FUN = sum, na.rm = TRUE)
 hist(dailystep, breaks=20, col="red")
 ```
 
-![](PA1_template_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-2-1.png)
+![](PA1_template_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-12-1.png)
 
 Working out the mean and median average:
 
@@ -45,7 +45,7 @@ stepsbyinterval <- aggregate(steps ~ interval, activity, mean)
 plot(stepsbyinterval$interval,stepsbyinterval$steps, type="l", main="Average Daily Step Numbers by Interval", xlab="Interval", ylab="Step Number", col="red")
 ```
 
-![](PA1_template_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-4-1.png)
+![](PA1_template_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-14-1.png)
 
 ``` r
 interval_largest <- stepsbyinterval[which.max(stepsbyinterval$steps),1]
@@ -65,24 +65,6 @@ Created a new dataset that is equal to the original dataset but with the missing
 
 ``` r
 library(Hmisc)
-```
-
-    ## Loading required package: lattice
-
-    ## Loading required package: survival
-
-    ## Loading required package: Formula
-
-    ## Loading required package: ggplot2
-
-    ## 
-    ## Attaching package: 'Hmisc'
-
-    ## The following objects are masked from 'package:base':
-    ## 
-    ##     format.pval, round.POSIXt, trunc.POSIXt, units
-
-``` r
 Imputedactivity <- activity
 Imputedactivity$steps <- impute(Imputedactivity$steps, fun=mean)
 ```
@@ -94,7 +76,7 @@ dailystep2 <- tapply(Imputedactivity$steps, activity$date, sum, na.rm=TRUE)
 hist(dailystep2, col= "blue", breaks=seq(from=0, to=25000, by=1500), main="Total Number of Steps Taken Each Day", xlab="Total Number of Steps")
 ```
 
-![](PA1_template_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-7-1.png)
+![](PA1_template_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-17-1.png)
 
 Working out the mean and median average:
 
@@ -126,4 +108,4 @@ ggplot(avgactivity, aes(interval, steps, color="Red")) +
     ylab("average number of steps")
 ```
 
-![](PA1_template_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-10-1.png)
+![](PA1_template_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-20-1.png)
