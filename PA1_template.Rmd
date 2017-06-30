@@ -13,7 +13,10 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Loading and preprocessing the data
 ```{r}
-activity <- read.csv("./data/activity.csv")
+if(!file.exists('activity.csv')){
+    unzip('activity.zip')
+}
+activity<- read.csv('activity.csv')
 ```
 
 ### What is the mean total number of steps taken per day
