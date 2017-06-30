@@ -158,17 +158,8 @@ plot(stepsbyinterval$interval,stepsbyinterval$steps, type=&quot;l&quot;, main=&q
 <p>Calculated the total number of missing values in the dataset</p>
 <pre class="r"><code>MissingValues &lt;- length(which(is.na(activity$steps)))</code></pre>
 <p>Created a new dataset that is equal to the original dataset but with the missing data filled in.</p>
-<pre class="r"><code>library(Hmisc)</code></pre>
-<pre><code>## Loading required package: lattice</code></pre>
-<pre><code>## Loading required package: survival</code></pre>
-<pre><code>## Loading required package: Formula</code></pre>
-<pre><code>## Loading required package: ggplot2</code></pre>
-<pre><code>## 
-## Attaching package: 'Hmisc'</code></pre>
-<pre><code>## The following objects are masked from 'package:base':
-## 
-##     format.pval, round.POSIXt, trunc.POSIXt, units</code></pre>
-<pre class="r"><code>Imputedactivity &lt;- activity
+<pre class="r"><code>library(Hmisc)
+Imputedactivity &lt;- activity
 Imputedactivity$steps &lt;- impute(Imputedactivity$steps, fun=mean)</code></pre>
 <p>Made a histogram of the total number of steps taken each day and calculate and report the mean and median total number of steps taken per day.</p>
 <pre class="r"><code>dailystep2 &lt;- tapply(Imputedactivity$steps, activity$date, sum, na.rm=TRUE)
